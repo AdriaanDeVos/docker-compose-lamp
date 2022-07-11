@@ -40,7 +40,7 @@ if (!$count_prices) {
             $result = mysqli_query($conn, $query);
             $num_created_minor_price++;
         } catch (mysqli_sql_exception $e) {
-            echo "[Info] Double-draw, lets pick another one..." . PHP_EOL;
+            echo "[Info] Double-draw minor price, lets pick another one..." . PHP_EOL;
         }
     }
 }
