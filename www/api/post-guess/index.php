@@ -25,7 +25,7 @@ try {
     if (mysqli_num_rows($price_result) == 0) {
         $result = array("status" => 200, "message" => "No price found at this position. Better luck next time.");
     } else {
-        $result = array("status" => 200, "message" => "You have won: €" . mysqli_fetch_array($price_result)[0]);
+        $result = array("status" => 200, "message" => "You have won: €" . mysqli_fetch_assoc($price_result)['price']);
     }
 } catch (mysqli_sql_exception $e) {
     // This occurs when one of the unique indexes fails. Either the user has already registered a ticket.
