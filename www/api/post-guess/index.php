@@ -30,7 +30,11 @@ try {
 } catch (mysqli_sql_exception $e) {
     // This occurs when one of the unique indexes fails. Either the user has already registered a ticket.
     // Or the gridposition has already been opened.
-    $result = array("status" => 404, "message" => "Unable to register user / grid-position ticket.");
+    if (str_contains($e->getMessage(), "uidx_ticket_position")) {
+        $result = array("status" => 404, "message" => "This ticket position has already been opened!");
+    } else {
+        $result = array("status" => 404, "message" => "This user has already guessed a position!");
+    }
 }
 
 mysqli_close($conn);
